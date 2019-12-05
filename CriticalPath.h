@@ -1,47 +1,43 @@
 #pragma once
-//#pragma onceÊÇÒ»¸ö±È½Ï³£ÓÃµÄC/C++ÔÓ×¢£¬
-//Ö»ÒªÔÚÍ·ÎÄ¼şµÄ×î¿ªÊ¼¼ÓÈëÕâÌõÔÓ×¢£¬
-//¾ÍÄÜ¹»±£Ö¤Í·ÎÄ¼şÖ»±»±àÒëÒ»´Î¡£
-
 
 /*
-Çó½â¹Ø¼üÂ·¾¶ÎÊÌâ£¬
-±ØĞëÊÇÓĞÏòÎŞ»·Í¼²ÅÓĞ¹Ø¼üÂ·¾¶
+æ±‚è§£å…³é”®è·¯å¾„é—®é¢˜ï¼Œ
+å¿…é¡»æ˜¯æœ‰å‘æ— ç¯å›¾æ‰æœ‰å…³é”®è·¯å¾„
 
 */
 #include<iostream>
 #include<stack>
 #include<string>
 using namespace std;
-//±í½áµã
+//è¡¨ç»“ç‚¹
 struct ArcNode {
-    int start;    //»¡Î²µÄ¶¥µãµÄÏÂ±ê
-    int end;    //»¡Í·µÄ¶¥µãµÄÏÂ±ê £¬ÓĞ¼ıÍ·µÄÒ»·½
-    int weight; //»¡µÄÈ¨ÖØ
-    ArcNode * next; //ÏÂÒ»Ìõ»¡
+    int start;    //å¼§å°¾çš„é¡¶ç‚¹çš„ä¸‹æ ‡
+    int end;    //å¼§å¤´çš„é¡¶ç‚¹çš„ä¸‹æ ‡ ï¼Œæœ‰ç®­å¤´çš„ä¸€æ–¹
+    int weight; //å¼§çš„æƒé‡
+    ArcNode * next; //ä¸‹ä¸€æ¡å¼§
 };
-//Í·½áµã
+//å¤´ç»“ç‚¹
 struct Vnode {
-    ArcNode * firstarc;  //µÚÒ»ÌõÒÀ¸½ÔÚ¸Ã¸Ã¶¥µãµÄ»¡
+    ArcNode * firstarc;  //ç¬¬ä¸€æ¡ä¾é™„åœ¨è¯¥è¯¥é¡¶ç‚¹çš„å¼§
     string data;
 };
 
 class Graph_DG {
 private:
-    int vexnum; //¶¥µã¸öÊı
-    int edge;   //±ßµÄÌõÊı
-    Vnode * arc; //ÁÚ½Ó±í
-    int *indegree; //¸÷¸ö¶¥µãµÄÈë¶ÈÇé¿ö
-    stack<int> List; //ÍØÆËĞòÁĞÖĞ¸÷¸ö±ßµÄÇé¿ö
-    int * ve;  //¼ÇÂ¼Ã¿¸ö¶¥µãµÄ×îÔç·¢ÉúÊ±¼ä
-    int * vl;  //¼ÇÂ¼Ã¿¸ö¶¥µã×î³Ù·¢ÉúÊ±¼ä
+    int vexnum; //é¡¶ç‚¹ä¸ªæ•°
+    int edge;   //è¾¹çš„æ¡æ•°
+    Vnode * arc; //é‚»æ¥è¡¨
+    int *indegree; //å„ä¸ªé¡¶ç‚¹çš„å…¥åº¦æƒ…å†µ
+    stack<int> List; //æ‹“æ‰‘åºåˆ—ä¸­å„ä¸ªè¾¹çš„æƒ…å†µ
+    int * ve;  //è®°å½•æ¯ä¸ªé¡¶ç‚¹çš„æœ€æ—©å‘ç”Ÿæ—¶é—´
+    int * vl;  //è®°å½•æ¯ä¸ªé¡¶ç‚¹æœ€è¿Ÿå‘ç”Ÿæ—¶é—´
 
 public:
     Graph_DG(int vexnum, int edge); 
-    ~Graph_DG();//Îö¹¹º¯Êı
-    bool check_edge_value(int, int, int); //¼ì²é±ßµÄĞÅÏ¢ÊÇ·ñºÏ·¨
-    void createGraph();//´´½¨Ò»¸öĞÂµÄÍ¼
-    void print();//´òÓ¡Í¼µÄÁÚ½Ó±í
+    ~Graph_DG();//ææ„å‡½æ•°
+    bool check_edge_value(int, int, int); //æ£€æŸ¥è¾¹çš„ä¿¡æ¯æ˜¯å¦åˆæ³•
+    void createGraph();//åˆ›å»ºä¸€ä¸ªæ–°çš„å›¾
+    void print();//æ‰“å°å›¾çš„é‚»æ¥è¡¨
     bool topological_sort();
     bool CriticalPath();
 };
